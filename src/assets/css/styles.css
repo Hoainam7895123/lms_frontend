@@ -1,0 +1,62 @@
+.app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-black {
+    color: #000000;
+}
+
+.text-545454 {
+    color: #545454;
+}
+
+.text-000000A3 {
+    color: #000000A3;
+}
+
+
+
+.bg-f3f3f3 {
+    background-color: #f3f3f3;
+}
+
+.bg-abf600 {
+    background-color: #abf600;
+}
+
+.bg-f2fed1 {
+    background-color: #f2fed1;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.icon-24 {
+    width: 24px;
+}
+
+.border-all {
+    border-style: solid; /* Đảm bảo border hiển thị */
+    border-color: #000000; /* Màu border, có thể thay đổi */
+    border-width: 1px 1px 5px 1px; /* Trên 1px, phải 1px, dưới 2px, trái 1px */
+    border-radius: 15px
+}
+
+.rounded-4 {
+    border: 1px solid;
+    border-radius: 15px;
+    border-color: #000000;
+}
+.rounded-5 {
+    border: 1px solid;
+    border-radius: 20px;
+    border-color: #000000;
+}
+
+.border-black {
+    border: 1px solid;
+    border-color: #000000 !important;
+}
