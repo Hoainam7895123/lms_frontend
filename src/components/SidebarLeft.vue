@@ -1,25 +1,61 @@
 <style>
+/* Sidebar chính */
 .custom-sidebar {
-    background-color: #f3f3f3;
-    width: 270px !important;
+    background-color: #ffffff; /* Màu nền trắng của Tabler */
+    border-right: 1px solid #e9ecef; /* Viền nhẹ bên phải */
 }
 
-.nav-custom {
-    height: 60px;
+/* Logo hoặc tên thương hiệu */
+.navbar-brand {
+    color: #206bc4; /* Màu xanh chủ đạo của Tabler */
 }
 
-.custom-sidebar .nav-link.active {
-    background-color: #f2fed1;
-    color: #000;
-    font-weight: bold;
+/* Liên kết trong menu */
+.nav-custom.nav-link {
+    color: #495057; /* Màu xám đậm mặc định của Tabler */
+    background-color: transparent; /* Nền trong suốt khi không hover */
+    transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
 }
 
-.logout-link:hover .me-2 {
-    color: #ff0000;
+/* Hiệu ứng hover */
+.nav-custom.nav-link:hover {
+    background-color: #f1f3f5; /* Màu xám nhạt khi hover */
+    color: #206bc4; /* Chuyển sang xanh Tabler */
+    padding-left: 1.75rem; /* Dịch nhẹ sang phải khi hover */
 }
 
-.logout-link:hover .span {
-    color: #ff0000;
+/* Trạng thái active */
+.nav-custom.nav-link.active {
+    background-color: #206bc4; /* Màu xanh chủ đạo của Tabler */
+    color: #ffffff !important; /* Chữ trắng khi active để tăng độ tương phản */
+}
+
+/* Icon trong menu */
+.nav-custom.nav-link .me-2 {
+    color: inherit; /* Kế thừa màu từ nav-link */
+}
+
+/* Logout link */
+.logout-link .nav-custom.nav-link {
+    color: #495057; /* Màu xám đậm mặc định */
+}
+
+.logout-link .nav-custom.nav-link:hover {
+    background-color: #f1f3f5; /* Màu xám nhạt khi hover */
+    color: #206bc4; /* Chuyển sang xanh Tabler */
+}
+
+/* Responsive: Điều chỉnh màu sắc trên màn hình nhỏ */
+@media (max-width: 992px) {
+    .nav-custom.nav-link:hover {
+        background-color: #f1f3f5; /* Giữ màu hover nhất quán */
+        color: #206bc4;
+    }
+
+    .nav-custom.nav-link.active {
+        background-color: #206bc4; /* Giữ màu active */
+        color: #ffffff; /* Chữ trắng khi active */
+    }
 }
 </style>
 <template>
@@ -61,24 +97,14 @@
                         </RouterLink>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <RouterLink
-                            class="nav-custom nav-link text-black"
-                            to="/dashboard/store"
-                            active-class="active"
-                        >
-                            <IconClipboardList class="me-2" />
-                            <span class="nav-link-title"> Quản lý bài tập </span>
-                        </RouterLink>
-                    </li>
-                    <li class="nav-item dropdown">
+                    <li v-if="user && user.role !== 'ROLE_TEACHER'" class="nav-item dropdown">
                         <RouterLink
                             class="nav-custom nav-link text-black"
                             to="/dashboard/join-request"
                             active-class="active"
                         >
                             <IconClipboardList class="me-2" />
-                            <span class="nav-link-title"> Quản lý yêu cầu tham gia </span>
+                            <span class="nav-link-title"> Yêu cầu tham gia </span>
                         </RouterLink>
                     </li>
 

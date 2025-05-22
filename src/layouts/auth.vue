@@ -12,6 +12,6 @@
 </template>
 <script>
 export default {
-    name: "login-layout", // Đặt tên chính xác
+    name: 'login-layout', // Đặt tên chính xác
 };
 </script>

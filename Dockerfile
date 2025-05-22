@@ -1,8 +1,8 @@
 FROM node:18 as build-stage
 WORKDIR /app
 COPY package*.json ./
-ARG VITE_APP_BASE_URL
-ENV VITE_APP_BASE_URL $VITE_APP_BASE_URL
+ARG VUE_APP_BASE_URL
+ENV VUE_APP_BASE_URL $VUE_APP_BASE_URL
 RUN npm install
 COPY ./ .
 RUN npm run build

@@ -132,7 +132,7 @@
                                         required
                                     />
                                 </div>
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label class="form-label">Khóa học</label>
                                     <select
                                         v-model="formTopic.course_id"
@@ -148,7 +148,7 @@
                                             {{ course.name }}
                                         </option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label class="form-label">Mô tả</label>
                                     <textarea
@@ -435,7 +435,7 @@
                             ></button>
                         </div>
                         <div class="modal-body">
-                            Bạn có chắc muốn xóa bài giảng "{{ deletingBlock?.name }}" không?
+                            Bạn có chắc muốn xóa chủ đề "{{ deletingTopic?.name }}" không?
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" @click="showDeleteModal = false">
@@ -464,7 +464,7 @@
                             ></button>
                         </div>
                         <div class="modal-body">
-                            Bạn có chắc muốn xóa chủ đề "{{ deletingBlock?.name }}" không?
+                            Bạn có chắc muốn xóa bài giảng "{{ deletingBlock?.name }}" không?
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" @click="showDeleteBlock = false">

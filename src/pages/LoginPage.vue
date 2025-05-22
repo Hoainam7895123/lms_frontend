@@ -1,50 +1,114 @@
-<style>
+<style scoped>
 .wrapper {
-    min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: #f0fae5;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; /* Đảm bảo wrapper chiếm toàn bộ chiều cao viewport */
+    padding: 1rem;
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước ngoài */
 }
 
 .login-form {
-    width: 500px;
+    background-color: #ffffff; /* White card background */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    width: 100%;
+    max-width: 450px; /* Optimal width for login form */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form:hover {
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
 }
 
 .title {
-    font-size: 30px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a; /* Dark text for contrast */
+    margin-bottom: 1.5rem;
 }
 
-.input-group .form-control {
-    border-radius: 15px;
-    border-color: #000000;
+.input-group {
+    margin-bottom: 1.5rem;
 }
 
-.input-group .input-group-text {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-color: #000000;
+.input-group-text {
+    background-color: #f1f3f5;
+    border: 1px solid #e9ecef;
+    color: #495057;
+}
+
+.form-control {
+    border: 1px solid #e9ecef;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #206bc4; /* Tabler's primary blue */
+    box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
+    outline: none;
 }
 
 .btn-countinue {
-    background-color: #8f8f8f;
-}
-
-.logo-img {
-    width: 25px;
-}
-
-.hr-line {
-    width: 40%;
+    background-color: #206bc4; /* Tabler's primary blue */
+    color: #ffffff;
     border: none;
-    height: 1px;
-    background-color: #000000;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.btn-countinue:hover {
+    background-color: #1a5aa3; /* Darker shade on hover */
+    transform: translateY(-1px);
+}
+
+.btn-countinue:active {
+    transform: translateY(0);
+}
+
+.mt-3 a {
+    color: #206bc4;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.mt-3 a:hover {
+    text-decoration: underline;
+    color: #1a5aa3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .login-form {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .form-control,
+    .btn-countinue {
+        font-size: 0.875rem;
+    }
 }
 </style>
 <template>
     <div class="wrapper">
-        <div class="login-form d-flex text-center flex-column p-4 bg-f3f3f3 border-all">
-            <h1 class="title">Sign in</h1>
+        <div class="login-form d-flex text-center flex-column p-4">
+            <h1 class="title">Learn Smart</h1>
             <div class="input-group mt-3">
                 <span class="input-group-text">
                     <IconUser />
@@ -63,18 +127,9 @@
                 />
             </div>
             <button @click="login" class="mt-3 p-2 rounded-4 btn-countinue fw-bold">
-                CONTINUE ->
+                Đăng nhập
             </button>
-            <div class="mt-3">Don't have an account? <a href="">Sign Up</a></div>
-            <div class="mt-3 d-flex align-items-center justify-content-center">
-                <hr class="hr-line" />
-                <span class="mx-3"> OR </span>
-                <hr class="hr-line" />
-            </div>
-            <button @click="loginWithGoogle" class="mt-3 p-2 rounded-4 fw-bold">
-                <img class="logo-img me-2" src="../assets/img/google-logo.png" alt="" />
-                GOOGLE
-            </button>
+            <div class="mt-3">Bạn đã có tài khoản chưa? <a href="">Đăng ký</a></div>
         </div>
     </div>
 </template>

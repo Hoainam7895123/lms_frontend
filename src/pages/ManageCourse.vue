@@ -1,6 +1,6 @@
 <template>
     <div class="me-4">
-        <SidebarTop text="Referral Program" />
+        <SidebarTop text="Quản lý khoá học" />
         <div class="container-xl my-2">
             <div class="d-flex align-items-center mb-3 justify-content-end">
                 <button
@@ -8,7 +8,7 @@
                     class="btn btn-primary"
                     @click="openEditModal(null)"
                 >
-                    Add New Course
+                    Thêm khoá học
                 </button>
             </div>
             <div v-if="courses.length" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -33,13 +33,13 @@
                                     class="dropdown-item"
                                     href="#"
                                     @click.prevent="openEditModal(course)"
-                                    >Edit</a
+                                    >Sửa</a
                                 >
                                 <a
                                     class="dropdown-item text-danger"
                                     href="#"
                                     @click.prevent="openDeleteModal(course)"
-                                    >Delete</a
+                                    >Xoá</a
                                 >
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                     {{ course.name }}
                                 </router-link>
                             </h5>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
                                 <RouterLink
                                     :to="`/dashboard/students/${course._id}`"
                                     class="text-muted"
@@ -85,7 +85,9 @@
                                     {{ course.teachers?.length || 0 }} Teachers
                                 </RouterLink>
                             </div>
-                            <div>{{ course.code }}</div>
+                            <div>
+                                <span class="badge bg-primary-lt">{{ course.code }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,7 +105,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">
-                                {{ editingCourse ? 'Edit Course' : 'Add Course' }}
+                                {{ editingCourse ? 'Sửa khoá học' : 'Thêm khoá học' }}
                             </h5>
                             <button
                                 type="button"
@@ -114,7 +116,7 @@
                         <div class="modal-body">
                             <form @submit.prevent="saveCourse">
                                 <div class="mb-3">
-                                    <label class="form-label">Name</label>
+                                    <label class="form-label">Tên khoá học</label>
                                     <input
                                         v-model="form.name"
                                         type="text"
@@ -127,7 +129,7 @@
                                     <input v-model="form.code" type="text" class="form-control" />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Description</label>
+                                    <label class="form-label">Mô tả</label>
                                     <textarea
                                         v-model="form.description"
                                         class="form-control"
@@ -135,16 +137,16 @@
                                     ></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Image URL</label>
+                                    <label class="form-label">Hình ảnh</label>
                                     <input v-model="form.image" type="url" class="form-control" />
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" @click="showEditModal = false">
-                                Cancel
+                                Huỷ
                             </button>
-                            <button class="btn btn-primary" @click="saveCourse">Save</button>
+                            <button class="btn btn-primary" @click="saveCourse">Lưu</button>
                         </div>
                     </div>
                 </div>
@@ -160,7 +162,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Confirm Deletion</h5>
+                            <h5 class="modal-title">Xác nhận xoá</h5>
                             <button
                                 type="button"
                                 class="btn-close"
@@ -168,13 +170,13 @@
                             ></button>
                         </div>
                         <div class="modal-body">
-                            Are you sure you want to delete "{{ deletingCourse?.name }}"?
+                            Bạn có chắc chắn muốn xoá khoá học "{{ deletingCourse?.name }}" không?
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" @click="showDeleteModal = false">
-                                Cancel
+                                Huỷ
                             </button>
-                            <button class="btn btn-danger" @click="deleteCourse">Delete</button>
+                            <button class="btn btn-danger" @click="deleteCourse">Xoá</button>
                         </div>
                     </div>
                 </div>
@@ -353,5 +355,30 @@ export default {
 
 .modal {
     background-color: rgba(0, 0, 0, 0.5); /* Backdrop */
+}
+
+/* Đảm bảo badge phù hợp với phong cách Tabler */
+.badge {
+    font-size: 0.875rem; /* Kích thước chữ nhỏ hơn một chút */
+    font-weight: 500; /* Độ đậm vừa phải */
+    padding: 0.25rem 0.5rem; /* Khoảng cách bên trong badge */
+    border-radius: 4px; /* Bo góc nhẹ */
+}
+
+/* Màu sắc badge nhẹ (primary light của Tabler) */
+.bg-primary-lt {
+    background-color: #e6f0fa; /* Màu xanh nhạt của Tabler */
+    color: #206bc4; /* Màu chữ xanh đậm */
+}
+
+/* Hiệu ứng hover cho badge (tùy chọn) */
+.badge:hover {
+    background-color: #d1e4f6; /* Màu nhạt hơn khi hover */
+    transition: background-color 0.3s ease;
+}
+
+/* Khoảng cách cho badge */
+.card-body > div:last-child {
+    margin-top: 0.5rem; /* Tạo khoảng cách với phần trên */
 }
 </style>
